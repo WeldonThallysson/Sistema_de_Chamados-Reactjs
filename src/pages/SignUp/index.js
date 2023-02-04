@@ -2,12 +2,14 @@ import React,{useState,useContext} from 'react';
 import { AuthContext } from '../../Context/auth';
 import Logo from '../../Assets/Logo_maior.png';
 import { Link } from 'react-router-dom';
+
 import './estilos.css'
 
 export default function SignUp() {
   const [nome,setNome] = useState('');
   const [email,setEmail] = useState('');
   const [senha,setSenha] = useState('');
+  
   const { Cadastro,loading } = useContext(AuthContext)
 
   async function cadastrar(e){
@@ -60,7 +62,7 @@ return (
         type={'submit'}
         className='Botao'
         
-      >{loading ? 'Caregando...' : 'Cadastrar'}</button>
+      >{loading ? 'Caregando...': 'Cadastrar'}</button>
       </form>
       <Link className="btn__CriarConta" to='/'>Já tem uma Conta?Faça Login</Link>
    </div>

@@ -1,0 +1,87 @@
+.Side__Bar{
+    margin:0;
+    padding: 0;
+    width: 200px;
+    background-color: #181c2e;
+    position: fixed;
+    overflow: auto;
+    height: 100%;
+}
+.Side__BarLogo{
+    background: url('../../Assets/cover 1.png');
+    background-color: #181c2e;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 150px;
+
+}
+
+.Side__Bar div{
+    padding-top: 30px ;
+}
+.Logo__SideBar{
+    width: 90px;
+    height: 90px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: drop-shadow( 2px 3px 6px #121212);
+    -webkit-filter: drop-shadow( 2px 3px 6px #121212);
+}
+
+.Profile__btn{
+    display: block;
+    padding: 15px;
+    display: flex;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.4s;
+}
+.Profile__btn:hover{
+    background-color: #121212;
+    color: rgb(236, 236, 236);
+}
+.Profile__btn svg{
+    margin-right: 0.5rem;
+}
+
+.Content{
+    margin-left: 200px;
+    padding: 1px 15px;
+}
+
+@media screen and (max-width: 700px) {
+       .Side__Bar{
+        width: 100%;
+        height: auto;
+        position: relative;
+       } 
+       .Content{
+        margin-left: 0;
+       }
+       .Side__Bar a{
+        float: left;
+       }
+       .Side__Bar div{
+        display: none;
+
+       }
+       .Side__Bar a svg{
+        display: none;
+       }
+    }
+
+
+    @media screen and (max-width: 400px) {
+            .Side__Bar a{
+                text-align: center;
+                float: none;
+            }        
+           .Side__Bar a svg{
+             display: none;
+           } 
+    }

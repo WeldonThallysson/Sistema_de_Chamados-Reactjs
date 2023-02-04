@@ -9,12 +9,12 @@ export default function SignIn() {
 
     const [email,setEmail] = useState('')
     const [senha,setSenha] = useState('')
-    const {Logar} = useContext(AuthContext)  
+    const {Logar,loading} = useContext(AuthContext)  
    
-    function loga(e){
+   async function loga(e){
         e.preventDefault()
-        if(email !== '' && senha !== ''){
-            Logar(email,senha)
+        if(email !== '' && senha !== '') {
+           await Logar(email,senha)
         }
     }
 
@@ -28,6 +28,7 @@ export default function SignIn() {
         <form className='Formulario' onSubmit={loga}>
           <h1 className='Titulo__Formulario'>Entrar</h1>
           <input 
+          required
           value={email}
           type={'text'} 
           className='Input'
@@ -36,6 +37,7 @@ export default function SignIn() {
           />
     
           <input  
+          required
           value={senha}
           type={'password'} 
           className='Input'
@@ -46,7 +48,7 @@ export default function SignIn() {
           value="Acessar"
           type={'submit'}
           className='Botao'
-        >Entrar</button>
+        >{loading ? 'Carregando...' : 'Entrar' }</button>
         </form>
         <Link className="btn__CriarConta" to='/registro'>Criar uma Conta</Link>
      </div>

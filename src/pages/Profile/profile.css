@@ -1,0 +1,91 @@
+.Conteudo__Formulario{
+   display: flex;
+ 
+   background-color:#f8f8f8;
+   border-radius: 8px ;
+   padding: 0.8em;
+   align-items: center;
+   margin-bottom:1em ;
+   
+}
+
+.Label__Avatar{
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.Label__Avatar input{
+   display: none;
+}
+
+.Label__Avatar span{
+    z-index: 99;
+    position: absolute;
+    opacity: 0.7;
+    transition: all 0.5s;
+
+}
+
+.Label__Avatar span:hover{
+    opacity: 1;
+    transform: scale(1.4);
+
+}
+.Formulario__Principal{
+    display: flex;
+    flex-direction: column;
+}
+.Formulario__Principal img{
+    margin-bottom: 1em;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+.Formulario__Principal label{
+    margin-bottom: 0.2em;
+    font-size: 1.5em;
+}
+
+.Formulario__Principal input,textarea,select{
+     margin: 1.2% 0;   
+     border:0;
+     border-radius: 5px;
+     width: 500px;
+     max-width: 600px;  
+     padding: 1em; 
+     background-color: rgba(255, 255, 255, 0.788);
+}
+
+.Formulario__Principal :disabled{
+    cursor: not-allowed;
+}
+.Formulario__Principal button{
+    background-color: rgb(12, 12, 49);
+    display: flex;
+    margin: 5% 0;
+    justify-content: center;
+    max-width: 800px;
+    color: #f8f8f8;
+    padding: 0.76em;
+
+    
+}
+
+.Btn__Sair{ 
+     
+    padding: 8px 20px;
+    border: 1px solid #121212;
+    background:transparent;
+    border-radius: 5px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+

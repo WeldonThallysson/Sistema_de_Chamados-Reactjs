@@ -1,0 +1,131 @@
+.new{
+    float: right;
+    margin: 1.5em;
+    background-color: #83bf02;
+    padding: 0.5em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: 600;
+    transition: ease-in-out 0.6s ;
+}
+
+.new svg{
+    margin-right: 5px;
+
+}
+.new:hover{
+    background-color: #5fd204;
+    transform: scale(1.1);
+}
+
+.dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Tabela__Principal{
+    border: 1px solid #CCC;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.Tabela__Principal caption{
+    font-size: 1.5em;
+    margin: 0.5em 0 0.75rem
+}   
+
+.Tabela__Principal tr{
+        background-color: #f8f8f8;
+        border: 1px solid #DDD;
+        padding: 0.35em;
+}
+
+.Tabela__Principal th, .Tabela__Principal td{
+    padding: 0.62rem;
+    text-align: center;
+    
+}
+.Tabela__Principal th {
+    font-size: 0.85em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.Tabela__Principal td .action{
+        border: 0;
+        padding: 5px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-right: 2px;
+}
+
+.Tabela__Principal td .action svg{
+        vertical-align: middle;
+}
+.Tabela__Principal td .badge{
+    padding: 3px;
+    border-radius: 3px;
+    color: #FFF;
+}
+
+.Alerta__Chamado{
+    margin: 2em 0 ;
+    font-size: 1.2em;
+    font-weight: 600px;
+}
+
+.btn__addMais{
+  margin: 1.5em 0;
+  padding: 0.5em 1em;
+  background-color: #181c2e;
+  border: 0;
+  border-radius: 5px;
+  font-size: 1.1em;
+  color: #FFF;
+}
+
+@media screen and (max-width: 600px) {
+    .Tabela__Principal{
+        border: 0;
+    }
+    .Tabela__Principal caption{
+        font-size: 1.5;
+
+    }
+    .Tabela__Principal thead{
+        border: none;
+        margin: -1px;
+        height: 1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .Tabela__Principal tr{
+        border-bottom:3px solid #DDD;
+        display: block;
+        margin-bottom: 0.60;
+    }
+
+    .Tabela__Principal td{
+        display: block;
+        border-bottom: 1px solid #DDD;
+        font-size: 0.8em;
+        text-align: right;
+    }
+    .Tabela__Principal td::before{
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
