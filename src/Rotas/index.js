@@ -18,6 +18,7 @@ export default function Rotas() {
         <Route path='/profile' element={<Private><Profile/></Private>}/>
         <Route path='/custumers' element={<Private><Custumers/></Private>}/>
         <Route path='/new' element={<Private><New/></Private>}/>
+        <Route path='/new/:id' element={<Private><New/></Private>}/>
      </Routes>
 
   );

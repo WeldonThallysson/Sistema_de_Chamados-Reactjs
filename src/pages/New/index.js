@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../Context/auth";
 import { database } from "../../Config/index";
-import { addDoc,doc,collection, getDocs } from "firebase/firestore";
+import { addDoc,collection, getDocs, getDoc, updateDoc,doc} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../../Components/Header";
 import Title from "../../Components/Title";
 import { FiPlusCircle } from "react-icons/fi";
@@ -15,15 +17,17 @@ export default function New() {
   /*O selecionado vai começar com zero pq ele vai ser o value do select */
 
   const {user} = useContext(AuthContext);
-
+  const {id} = useParams()
   const [clientes, setClientes] = useState([]);
   const [selecionado, setSelecionado] = useState(0);
   const [carregarusuario, setCarregarUsuario] = useState(true);
   const [assunto, setAssunto] = useState("Suporte");
   const [status, setStatus] = useState("");
   const [complemento, setComplemento] = useState("");
-
+  const [editarchamado,setEditarChamado] = useState(false);
+  const navigate = useNavigate()
   useEffect(() => {
+  
     async function LoadCustumer() {
       const query = await getDocs(collection(database, "custumers"))
         .then((snapshot) => {
@@ -38,10 +42,18 @@ export default function New() {
               setClientes([{ id: 1, nome: "Freela" }]);
               setCarregarUsuario(false);
               return;
-            }
+            } 
+            
+            
+            if(id){
+              LoadId(lista)
+             
+           }
 
             setClientes(lista);
             setCarregarUsuario(false);
+
+          
           });
         })
         .catch(() => {
@@ -49,7 +61,30 @@ export default function New() {
         });
     }
     LoadCustumer();
-  }, []);
+  }, [id]);
+
+
+
+  async function LoadId(lista){
+     
+    const docSnap = await getDoc(doc(database,"chamados", id))
+
+    .then((snapshot) => {   
+      
+      let index = lista.findIndex(item => item.id === snapshot.data().clienteId);
+      setSelecionado(index);
+      setAssunto(snapshot.data().assunto);
+      setComplemento(snapshot.data().complemento);
+      setStatus(snapshot.data().status);
+      setEditarChamado(true);
+
+    })   
+    .catch((error) => {
+      console.log(error)
+      setEditarChamado(false)
+    })
+
+  }
 
   function handleOptionChange(e) {
     setStatus(e.target.value);
@@ -67,7 +102,26 @@ export default function New() {
 
   async function registrar(e){
     e.preventDefault();
-
+    if(editarchamado){
+      const docSnap = await updateDoc(doc(database,"chamados", id),{  
+       cliente: clientes[selecionado].nome,
+       clienteId: clientes[selecionado].id,
+       assunto: assunto,
+       complemento: complemento,
+       status: status,
+       userUid: user.uid,     
+       })
+       .then(() => {
+       toast.success("Chamado atualizado com sucesso");
+       setComplemento("");
+       setAssunto("Suporte");
+       setSelecionado(0);
+       setStatus("");
+       navigate('/dashboard');
+      })
+       return;
+      }
+    
     await addDoc(collection(database,"chamados"),{
       created: new Date(),
       cliente: clientes[selecionado].nome,
@@ -96,7 +150,7 @@ export default function New() {
       <Header />
 
       <div className="Content">
-        <Title nome={"Novo Chamado"}>
+        <Title nome={id ? "Editando Chamado" : "Novo Chamado"}>
           <FiPlusCircle size={25} color="black" />
         </Title>
         <div className="Conteudo__Formulario">

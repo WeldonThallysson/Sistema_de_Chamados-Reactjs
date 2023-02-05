@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore";
 import { database } from "../../Config/index";
 import { id } from "date-fns/locale";
+import Modal from "../../Components/Modal";
 
 export default function Dashboard() {
   const [chamados, setChamados] = useState([]);
@@ -24,7 +25,8 @@ export default function Dashboard() {
 
   const [lastDocs, setLastDocs] = useState([]);
   const [carregarMais, setCarregarMais] = useState(false);
-
+  const [ativeModal,setAtiveModal] = useState(false);
+  const [detalhes,setDetalhes] = useState();
   useEffect(() => {
     async function chamadosCadastrados() {
       const q = query(
@@ -90,7 +92,10 @@ export default function Dashboard() {
     });
   }
   //agora aqui  abaixo vai ficar nossa condição de carregando
-
+     function MostrarModal(item){
+      setAtiveModal(true)
+      setDetalhes(item)
+     }
   if (loading) {
     return (
       <div>
@@ -160,18 +165,21 @@ export default function Dashboard() {
                         </td>
                         <td data-label="Cadastrado">{item.createdFormatado}</td>
                         <td data-label="#">
-                          <button
+                          <Link
                             className="action"
                             style={{ backgroundColor: "#3586f3" }}
+                            onClick={() => MostrarModal(item)}
+                            
                           >
                             <FiSearch color="#FFF" size={17} />
-                          </button>
-                          <button
+                          </Link>
+                          <Link
                             className="action"
                             style={{ backgroundColor: "#f6a935" }}
+                            to={`/new/${item.id}`}
                           >
                             <FiEdit2 color="#FFF" size={17} />
-                          </button>
+                          </Link>
                         </td>
                       </tr>
                     );
@@ -181,13 +189,17 @@ export default function Dashboard() {
               {carregarMais && <h3>Buscando mais Chamados...</h3>}
               {!carregarMais && !vazio && (
                 <button onClick={mostrarMais} className="btn__addMais">
-                  Carregar mais...
+                  Buscar mais
                 </button>
               )}
             </>
           )}
         </>
       </div>
+      {ativeModal && (<Modal 
+       conteudo={detalhes}  
+      setAtiveModal={setAtiveModal}/>)}
+    
     </div>
   );
 }

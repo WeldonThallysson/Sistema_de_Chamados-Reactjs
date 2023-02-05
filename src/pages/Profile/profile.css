@@ -20,6 +20,7 @@
 }
 .Label__Avatar input{
    display: none;
+   width: 20px;
 }
 
 .Label__Avatar span{
@@ -89,3 +90,14 @@
 
 }
 
+@media screen and (max-width: 700px){
+   
+.Formulario__Principal input,textarea,select{
+    margin: 1.2% 0;   
+    border:0;
+    border-radius: 5px;
+    max-width: 300px;  
+    padding: 1em; 
+    background-color: rgba(255, 255, 255, 0.788);
+} 
+}

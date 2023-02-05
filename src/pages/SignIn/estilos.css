@@ -1,19 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace:wght@600&display=swap');
+
 .Conteiner__Center{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-color: #121212;
+    background: url('https://thumbs.dreamstime.com/b/fundo-textured-protegido-preto-e-azul-do-brilho-wallpaper-p-gina-livro-pinturas-impress-o-fundos-m-veis-tampas-poupan-as-de-tela-149843891.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 5%;
     padding: 0 12px;
 
 }
+.descricao{
+    font-size: 0.8rem;
+}
 .Conteiner__Login{
-    background-color: #EAEAEC;
-    display: flex;
     align-items: center;
+    background-color: #EAEAEC;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    display: flex;
     justify-content: center;
     flex-direction: column;
     width: 600px;
+  
 }
 
 .Login__Area{
@@ -21,6 +32,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
 
 }
 .Img__Login{
@@ -41,6 +54,7 @@
     text-align: center;
     margin-bottom: 1rem;
     color:#181c2E ;
+    font-family: 'Trispace', sans-serif;;
 
 }
 
@@ -62,7 +76,7 @@
     font-size: 1.3rem;
 }
 
-btn__CriarConta{
+.btn__CriarConta{
     margin: 1.5rem 0;
     color: #121212;
     cursor: pointer;

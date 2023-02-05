@@ -26,7 +26,8 @@ export default function SignIn() {
         </div>
 
         <form className='Formulario' onSubmit={loga}>
-          <h1 className='Titulo__Formulario'>Entrar</h1>
+          <h1 className='Titulo__Formulario'>Space Call</h1>
+          <h2 className='Titulo__Formulario descricao'>Space Call Soluções eficientes para seus chamados</h2>
           <input 
           required
           value={email}
